@@ -87,5 +87,9 @@ endif
 	git clone https://github.com/gpakosz/.tmux.git ~/.oh-my-tmux
 	ln -s -f ~/.oh-my-tmux/.tmux.conf ~/
 	cp tmux/.tmux.conf.local ~/
+ifeq ($(OS_TYPE), Darwin)
+	>> ~/.tmux.conf.local echo "\n# Enable selection copy on VS code terminal"
+	>> ~/.tmux.conf.local echo "set -g default-command \"reattach-to-user-namespace -l \$$SHELL\""
+endif
 
 .PHONY: install
