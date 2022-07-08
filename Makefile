@@ -45,6 +45,8 @@ else ifeq ($(OS_TYPE), Linux)
 endif
 endif
 	@echo "Git is installed."
+	@echo "Configuring Git..."
+	cp -f git/.gitconfig ~/
 
 --install_common: \
 	--check-git-installed \
