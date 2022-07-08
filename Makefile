@@ -44,7 +44,7 @@ else ifeq ($(OS_TYPE), Linux)
 	@sudo apt install git
 endif
 endif
-	@echo "Git is insatlled."
+	@echo "Git is installed."
 
 --install_common: \
 	--check-git-installed \
