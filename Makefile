@@ -65,6 +65,7 @@ install_neovim:
 ifeq ($(OS_TYPE), Darwin)
 	@brew install neovim
 else ifeq ($(OS_TYPE), Linux)
+	@sudo add-apt-repository ppa:neovim-ppa/unstable -y
 	@sudo apt install neovim
 endif
 	@echo "Configuring Neovim..."
