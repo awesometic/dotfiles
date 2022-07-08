@@ -84,7 +84,8 @@ else ifeq ($(OS_TYPE), Linux)
 	@sudo apt install tmux
 endif
 	@echo "Configuring tmux..."
-	git clone https://github.com/gpakosz/.tmux.git ~/.oh-my-tmux
+	rm -rf ~/.oh-my-tmux \
+	&& git clone https://github.com/gpakosz/.tmux.git ~/.oh-my-tmux
 	ln -s -f ~/.oh-my-tmux/.tmux.conf ~/
 	cp tmux/.tmux.conf.local ~/
 ifeq ($(OS_TYPE), Darwin)
