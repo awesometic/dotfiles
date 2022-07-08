@@ -48,6 +48,7 @@ endif
 
 --install_common: \
 	--check-git-installed \
+	install_zsh \
 	install_neovim \
 	install_tmux
 
@@ -61,6 +62,22 @@ install_homebrew:
 	@echo "Installing Homebrew..."
 	@sudo true
 	curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh | bash
+
+install_zsh:
+	@echo "Installing zsh..."
+ifeq ($(OS_TYPE), Darwin)
+	@brew install zsh
+else ifeq ($(OS_TYPE), Linux)
+	@sudo apt install zsh
+endif
+	@echo "Configuring zsh..."
+	rm -rf ~/.oh-my-zsh \
+	&& curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh | bash \
+	&& git clone --depth=1 https://github.com/zsh-users/zsh-syntax-highlighting.git ~/.oh-my-zsh/custom/plugins/zsh-syntax-highlighting \
+	&& git clone --depth=1 https://github.com/zsh-users/zsh-autosuggestions ~/.oh-my-zsh/custom/plugins/zsh-autosuggestions \
+	&& git clone --depth=1 https://github.com/zsh-users/zsh-completions ~/.oh-my-zsh/custom/plugins/zsh-completions \
+	&& git clone --depth=1 https://github.com/romkatv/powerlevel10k.git ~/.oh-my-zsh/custom/themes/powerlevel10k
+	cp -f zsh/.zshrc zsh/.p10k.zsh ~/
 
 install_neovim:
 	@echo "Installing Neovim..."
