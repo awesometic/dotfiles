@@ -50,10 +50,12 @@ endif
 	@echo "Git is insatlled."
 
 --install_macos: \
-	install_neovim
+	install_neovim \
+	install_tmux
 
 --install_linux: \
-	install_neovim
+	install_neovim \
+	install_tmux
 
 install_homebrew:
 	@echo "Installing Homebrew..."
@@ -73,5 +75,17 @@ endif
 	&& git clone https://github.com/NvChad/NvChad ~/.config/nvim --depth 1
 	cp -rf `pwd`/nvchad/custom ~/.config/nvim/lua
 	nvim --headless -c 'autocmd User PackerComplete quitall' -c 'PackerSync'
+
+install_tmux:
+	@echo "Installing tmux..."
+ifeq ($(OS_TYPE), Darwin)
+	@brew install tmux
+else ifeq ($(OS_TYPE), Linux)
+	@sudo apt install tmux
+endif
+	@echo "Configuring tmux..."
+	git clone https://github.com/gpakosz/.tmux.git ~/.oh-my-tmux
+	ln -s -f ~/.oh-my-tmux/.tmux.conf ~/
+	cp tmux/.tmux.conf.local ~/
 
 .PHONY: install
