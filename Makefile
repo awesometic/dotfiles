@@ -12,11 +12,9 @@ $(info Installing for macOS...)
 ifeq (, $(shell which brew 2> /dev/null))
 install: \
 	install_homebrew \
-	--check-git-installed \
 	--install_macos
 else
 install: \
-	--check-git-installed \
 	--install_macos
 endif
 
@@ -27,7 +25,6 @@ ifeq (, $(shell which apt 2> /dev/null))
 $(error It is not supported to install on not-Debian-based Linux distributions.)
 else
 install: \
-	--check-git-installed \
 	--install_linux
 endif
 
@@ -49,13 +46,16 @@ endif
 endif
 	@echo "Git is insatlled."
 
---install_macos: \
+--install_common: \
+	--check-git-installed \
 	install_neovim \
 	install_tmux
 
+--install_macos: \
+	--install_common
+
 --install_linux: \
-	install_neovim \
-	install_tmux
+	--install_common
 
 install_homebrew:
 	@echo "Installing Homebrew..."
