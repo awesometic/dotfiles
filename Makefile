@@ -87,7 +87,7 @@ ifeq ($(OS_TYPE), Darwin)
 	@brew install neovim
 else ifeq ($(OS_TYPE), Linux)
 	@sudo add-apt-repository ppa:neovim-ppa/unstable -y
-	@sudo apt install neovim
+	@sudo apt install neovim -y
 endif
 	@echo "Configuring Neovim..."
 	rm -rf ~/.config/nvim \
