@@ -86,8 +86,9 @@ install_neovim:
 ifeq ($(OS_TYPE), Darwin)
 	@brew install neovim
 else ifeq ($(OS_TYPE), Linux)
-	@sudo add-apt-repository ppa:neovim-ppa/unstable -y
-	@sudo apt install neovim -y
+	$(shell [ ! -d "./temp" ] && mkdir temp)
+	wget https://github.com/neovim/neovim/releases/download/stable/nvim-linux64.deb -O temp/nvim-linux64-0.7.2.deb
+	@sudo apt install ./temp/nvim-linux64-0.7.2.deb -y
 endif
 	@echo "Configuring Neovim..."
 	rm -rf ~/.config/nvim \
