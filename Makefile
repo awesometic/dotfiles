@@ -92,7 +92,7 @@ endif
 	@echo "Configuring Neovim..."
 	rm -rf ~/.config/nvim \
 	&& git clone https://github.com/NvChad/NvChad ~/.config/nvim --depth 1
-	cp -rf `pwd`/nvchad/custom ~/.config/nvim/lua
+	cp -rf nvchad/custom ~/.config/nvim/lua
 	nvim --headless -c 'autocmd User PackerComplete quitall' -c 'PackerSync'
 
 install_tmux:
