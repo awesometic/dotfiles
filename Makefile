@@ -91,6 +91,8 @@ else ifeq ($(OS_TYPE), Linux)
 endif
 	@echo "Configuring Neovim..."
 	rm -rf ~/.config/nvim \
+        rm -rf ~/.local/share/nvim \
+        rm -rf ~/.cache/nvim \
 	&& git clone https://github.com/NvChad/NvChad ~/.config/nvim --depth 1
 	cp -rf nvchad/custom ~/.config/nvim/lua
 	nvim --headless -c 'autocmd User PackerComplete quitall' -c 'PackerSync'
