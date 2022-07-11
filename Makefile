@@ -41,7 +41,7 @@ ifeq (, $(shell which git 2> /dev/null))
 ifeq ($(OS_TYPE), Darwin)
 	@brew install git
 else ifeq ($(OS_TYPE), Linux)
-	@sudo apt install git
+	@sudo apt install git -y
 endif
 endif
 	@echo "Git is installed."
@@ -70,7 +70,7 @@ install_zsh:
 ifeq ($(OS_TYPE), Darwin)
 	@brew install zsh
 else ifeq ($(OS_TYPE), Linux)
-	@sudo apt install zsh
+	@sudo apt install zsh -y
 endif
 	@echo "Configuring zsh..."
 	rm -rf ~/.oh-my-zsh \
@@ -103,7 +103,7 @@ install_tmux:
 ifeq ($(OS_TYPE), Darwin)
 	@brew install tmux
 else ifeq ($(OS_TYPE), Linux)
-	@sudo apt install tmux
+	@sudo apt install tmux -y
 endif
 	@echo "Configuring tmux..."
 	rm -rf ~/.oh-my-tmux \
