@@ -80,6 +80,7 @@ endif
 	&& git clone --depth=1 https://github.com/zsh-users/zsh-completions ~/.oh-my-zsh/custom/plugins/zsh-completions \
 	&& git clone --depth=1 https://github.com/romkatv/powerlevel10k.git ~/.oh-my-zsh/custom/themes/powerlevel10k
 	cp -f zsh/.zshrc zsh/.p10k.zsh ~/
+	@sudo chsh -s /bin/zsh $$USER
 
 install_neovim:
 	@echo "Installing Neovim..."
