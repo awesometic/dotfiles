@@ -23,4 +23,12 @@ M.ui = {
   theme = "aquarium",
 }
 
+-- Additional Vim commands
+vim.cmd [[
+   augroup nvim_cursorline
+      autocmd VimEnter * :highlight CursorLine guibg=#2C2E3E
+      autocmd VimEnter * :set cursorcolumn
+   augroup END
+]]
+
 return M
