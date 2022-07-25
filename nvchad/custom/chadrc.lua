@@ -15,6 +15,7 @@ M.plugins = {
   -- Override plugin options
   override = {
     ["kyazdani42/nvim-tree.lua"] = override.nvimtree,
+    ["NvChad/ui"] = override.uiplugin,
   },
 }
 
