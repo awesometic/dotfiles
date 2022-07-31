@@ -127,15 +127,24 @@ alias vim='nvim'
 # Other aliases
 alias ls='ls --color=auto'
 
+# If macOS system
 if [ $(uname) = 'Darwin' ]; then
 	# HomeBrew - GNU utilities for macOS
 	export PATH="/opt/homebrew/opt/coreutils/libexec/gnubin:$PATH"
+
+	# Explicit VS Code CLI command
+	alias code="/Applications/Visual\ Studio\ Code.app/Contents/Resources/app/bin/code"
+
+	if command -v minikube &> /dev/null; then
+		# For Docker support of AMD hackintosh or acutally for its really usability
+		eval "$(minikube docker-env)"
+	fi
 fi
 
+# To add Pyenv root directory to PATH if pyenv installed
 if command -v pyenv &> /dev/null; then
-	# pyenv
 	export PYENV_ROOT="$HOME/.pyenv"
-	command -v pyenv >/dev/null || export PATH="$PYENV_ROOT/bin:$PATH"
+	export PATH="$PYENV_ROOT/bin:$PATH"
 	eval "$(pyenv init -)"
 fi
 
