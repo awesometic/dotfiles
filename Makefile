@@ -97,7 +97,7 @@ endif
         rm -rf ~/.cache/nvim \
 	&& git clone https://github.com/NvChad/NvChad ~/.config/nvim --depth 1
 	cp -rf nvchad/custom ~/.config/nvim/lua
-	nvim --headless -c 'sleep 7' -c 'autocmd User PackerComplete quitall' -c 'PackerSync'
+	nvim --headless -c 'sleep 7' -c 'autocmd User PackerComplete quitall' -c 'sleep 3' -c 'PackerSync'
 
 install_tmux:
 	@echo "Installing tmux..."
