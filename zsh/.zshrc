@@ -139,6 +139,18 @@ if [ $(uname) = 'Darwin' ]; then
 		# For Docker support of AMD hackintosh or acutally for its really usability
 		eval "$(minikube docker-env)"
 	fi
+
+  # If PHP exists and its version is 7, use it as default one
+  if command -v php &> /dev/null; then
+    if [[ $(php -v | head -n 1 | cut -d '.' -f 1) = "PHP 7" ]]; then
+      # For the work development environment
+      export PATH="/opt/homebrew/opt/php@7.4/bin:$PATH"
+      export PATH="/opt/homebrew/opt/php@7.4/sbin:$PATH"
+    else
+      export PATH="/opt/homebrew/opt/php/bin:$PATH"
+      export PATH="/opt/homebrew/opt/php/sbin:$PATH"
+    fi
+  fi
 fi
 
 # To add Pyenv root directory to PATH if pyenv installed
