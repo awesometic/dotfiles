@@ -129,6 +129,12 @@ alias ls='ls --color=auto'
 
 # If macOS system
 if [ $(uname) = 'Darwin' ]; then
+	# HomeBrew, setup PATH if not set already after installing HomeBrew
+	if ! command -v brew &> /dev/null; then
+		export PATH="/opt/homebrew/bin:$PATH"
+		export PATH="/opt/homebrew/sbin:$PATH"
+	fi
+
 	# HomeBrew - GNU utilities for macOS
 	export PATH="/opt/homebrew/opt/coreutils/libexec/gnubin:$PATH"
 
