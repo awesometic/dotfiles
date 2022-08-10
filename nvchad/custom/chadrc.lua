@@ -7,6 +7,7 @@ M.plugins = {
   -- Remove some of the built-in plugins
   remove = {
     "kyazdani42/nvim-tree.lua",
+    "NvChad/ui",
   },
 
   -- Add the new plugins
@@ -15,7 +16,6 @@ M.plugins = {
   -- Override plugin options
   override = {
     ["kyazdani42/nvim-tree.lua"] = override.nvimtree,
-    ["NvChad/ui"] = override.uiplugin,
   },
 }
 
