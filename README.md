@@ -57,3 +57,7 @@ Enter the following command will help you to edit the configuration.
 ```bash
 git config --global --edit
 ```
+
+## License
+
+[MIT License](LICENSE)
