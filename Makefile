@@ -88,6 +88,7 @@ ifeq ($(OS_TYPE), Darwin)
 	@brew install neovim
 else ifeq ($(OS_TYPE), Linux)
 	$(shell [ ! -d "./temp" ] && mkdir temp)
+	@sudo apt purge neovim neovim-runtime -y
 	wget https://github.com/neovim/neovim/releases/download/stable/nvim-linux64.deb -O temp/nvim-linux64-0.7.2.deb
 	@sudo apt install ./temp/nvim-linux64-0.7.2.deb -y
 endif
