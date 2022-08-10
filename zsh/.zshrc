@@ -127,6 +127,11 @@ alias vim='nvim'
 # Other aliases
 alias ls='ls --color=auto'
 
+# Use user's binary folder if exists
+if [ -d "$HOME/bin" ]; then
+  export PATH="$HOME/bin:$PATH"
+fi
+
 # If macOS system
 if [ $(uname) = 'Darwin' ]; then
 	# HomeBrew, setup PATH if not set already after installing HomeBrew
