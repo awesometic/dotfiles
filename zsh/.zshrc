@@ -132,6 +132,15 @@ if [ -d "$HOME/bin" ]; then
   export PATH="$HOME/bin:$PATH"
 fi
 
+# Flutter
+if [ -d "$HOME/Developer/flutter" ]; then
+  export PATH="$HOME/Developer/flutter/bin:$PATH"
+
+  if [ -d "/Applications/Microsoft Edge.app" ]; then
+    export CHROME_EXECUTABLE="/Applications/Microsoft Edge.app/Contents/MacOS/Microsoft Edge"
+  fi
+fi
+
 # If macOS system
 if [ $(uname) = 'Darwin' ]; then
 	# HomeBrew, setup PATH if not set already after installing HomeBrew
