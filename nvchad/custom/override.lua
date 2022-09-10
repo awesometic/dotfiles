@@ -1,5 +1,12 @@
 local M = {}
 
+M.uiplugin = {
+  statusline = {
+    separator_style = "block",
+    overriden_modules = nil,
+  },
+}
+
 M.treesitter = {
   ensure_installed = {
     "javascript",
