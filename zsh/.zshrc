@@ -149,6 +149,11 @@ if [ $(uname) = 'Darwin' ]; then
 		export PATH="/opt/homebrew/sbin:$PATH"
 	fi
 
+	# HomeBrew - Git
+	if [ -f "/opt/homebrew/bin/git" ]; then
+		alias git="/opt/homebrew/bin/git"
+	fi
+
 	# HomeBrew - GNU utilities for macOS
 	export PATH="/opt/homebrew/opt/coreutils/libexec/gnubin:$PATH"
 
