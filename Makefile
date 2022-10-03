@@ -105,7 +105,7 @@ install_tmux:
 ifeq ($(OS_TYPE), Darwin)
 	@brew install tmux
 else ifeq ($(OS_TYPE), Linux)
-	@sudo apt install tmux -y
+	@sudo apt install tmux xclip -y
 endif
 	@echo "Configuring tmux..."
 	rm -rf ~/.oh-my-tmux \
