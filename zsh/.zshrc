@@ -141,6 +141,11 @@ if [ -d "$HOME/Developer/flutter" ]; then
   fi
 fi
 
+# If Linux system
+if [ $(uname) = 'Linux' ]; then
+  export LANG="C.UTF-8"
+fi
+
 # If macOS system
 if [ $(uname) = 'Darwin' ]; then
 	# HomeBrew, setup PATH if not set already after installing HomeBrew
