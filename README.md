@@ -5,6 +5,7 @@ Dotfiles for my various development environments.
 ## Supported platforms
 
 - Debian based Linux (x86_64)
+  - Including WSL 2 on Windows 11
 - macOS (x86_64, arm64)
 
 ## How to use
