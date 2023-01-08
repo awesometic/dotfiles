@@ -102,7 +102,7 @@ endif
 install_tmux:
 	@echo "Installing tmux..."
 ifeq ($(OS_TYPE), Darwin)
-	@brew install tmux
+	@brew install tmux reattach-to-user-namespace
 else ifeq ($(OS_TYPE), Linux)
 	@sudo apt install tmux xclip -y
 endif
