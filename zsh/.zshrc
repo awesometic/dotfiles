@@ -178,6 +178,19 @@ if [ $(uname) = 'Darwin' ]; then
 	fi
 fi
 
+# If Windows system
+if [[ $(uname) == 'MSYS_NT'* ]] || [[ $(uname) == 'MINGW64_NT'* ]]; then
+	export XDG_CONFIG_HOME="/home/$USER/.config"
+	export XDG_DATA_HOME="/home/$USER/.local/share"
+
+	# Workaround for starting tmux
+	# https://github.com/alacritty/alacritty/issues/1687#issuecomment-1119979280
+	tmux() {
+		TMUX="command tmux -T RGB ${@}"
+		SHELL=/usr/bin/zsh script -qO /dev/null -c "eval $TMUX";
+	}
+fi
+
 # To add Pyenv root directory to PATH if pyenv installed
 if command -v pyenv &> /dev/null; then
 	export PYENV_ROOT="$HOME/.pyenv"
