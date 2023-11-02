@@ -5,6 +5,7 @@
 #
 
 OS_TYPE := $(shell uname)
+NEOVIM_INSTALLED := $(shell command -v nvim 2> /dev/null)
 
 # macOS
 ifeq ($(OS_TYPE), Darwin)
@@ -87,8 +88,12 @@ install_neovim:
 ifeq ($(OS_TYPE), Darwin)
 	@brew install neovim ripgrep
 else ifeq ($(OS_TYPE), Linux)
-	# TODO: Need to install at least version 0.8, but it strongly depends on the OS, package manager, CPU architecture
+	# TODO: Need to install at least version 0.8, but it strongly depends on the CPU architecture
 	# TODO: Need to install ripgrep to use live grep feature in NvChad
+ifndef NEOVIM_INSTALLED
+	@echo "Install neovim first and install its configs using 'make install_neovim' command"
+	exit 1
+endif
 endif
 	@echo "Configuring Neovim..."
 	rm -rf ~/.config/nvim \
