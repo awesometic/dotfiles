@@ -85,12 +85,10 @@ endif
 install_neovim:
 	@echo "Installing Neovim..."
 ifeq ($(OS_TYPE), Darwin)
-	@brew install neovim
+	@brew install neovim ripgrep
 else ifeq ($(OS_TYPE), Linux)
-	$(shell [ ! -d "./temp" ] && mkdir temp)
-	@sudo apt purge neovim neovim-runtime -y
-	wget https://github.com/neovim/neovim/releases/download/stable/nvim-linux64.deb -O temp/nvim-linux64-0.7.2.deb
-	@sudo apt install ./temp/nvim-linux64-0.7.2.deb -y
+	# TODO: Need to install at least version 0.8, but it strongly depends on the OS, package manager, CPU architecture
+	# TODO: Need to install ripgrep to use live grep feature in NvChad
 endif
 	@echo "Configuring Neovim..."
 	rm -rf ~/.config/nvim \
