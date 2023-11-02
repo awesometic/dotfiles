@@ -1,34 +1,29 @@
+---@type ChadrcConfig
 local M = {}
 
-local override = require "custom.override"
-
-M.plugins = {
-
-  -- Remove some of the built-in plugins
-  remove = {
-    "kyazdani42/nvim-tree.lua",
-  },
-
-  -- Add the new plugins
-  user = require "custom.plugins",
-
-  -- Override plugin options
-  override = {
-    ["kyazdani42/nvim-tree.lua"] = override.nvimtree,
-    ["NvChad/ui"] = override.uiplugin,
-  },
-}
+-- Path to overriding theme and highlights files
+local highlights = require "custom.highlights"
 
 M.ui = {
-  theme = "aquarium",
+  theme = "onedark",
+  theme_toggle = { "onedark", "one_light" },
+
+  hl_override = highlights.override,
+  hl_add = highlights.add,
+
+  statusline = {
+    theme = "vscode_colored", -- default/vscode/vscode_colored/minimal
+
+    -- default/round/block/arrow (separators work only for "default" statusline theme;
+    -- round and block will work for the minimal theme only)
+    separator_style = "default",
+    overriden_modules = nil,
+  },
 }
 
--- Additional Vim commands
-vim.cmd [[
-   augroup nvim_cursorline
-      autocmd VimEnter * :highlight CursorLine guibg=#2C2E3E
-      autocmd VimEnter * :set cursorcolumn
-   augroup END
-]]
+M.plugins = "custom.plugins"
+
+-- check core.mappings for table structure
+M.mappings = require "custom.mappings"
 
 return M
