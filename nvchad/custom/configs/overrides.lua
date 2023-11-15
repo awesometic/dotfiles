@@ -13,7 +13,6 @@ M.treesitter = {
     "cpp",
     "java",
     "kotlin",
-    "swift",
     "php",
     "lua",
     "bash",
